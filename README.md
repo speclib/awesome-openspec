@@ -38,7 +38,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 ### Core Workflow
 
 ```
-/opsx:new → /opsx:ff or /opsx:continue → /opsx:apply → /opsx:verify → /opsx:archive
+/opsx:explore → /opsx:propose → /opsx:apply → /opsx:verify → /opsx:archive
 ```
 
 ### Why OpenSpec
