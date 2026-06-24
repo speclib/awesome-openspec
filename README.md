@@ -89,6 +89,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 ## Schemas & Extensions
 
+- [e2e-runbooks](https://github.com/Lukk17/openspec-schemas) - Capability-level e2e runbooks with behaviour-only assertions and token accounting.
 - [openspec-reviewed-workflow](https://github.com/griffithkk3-del/openspec-reviewed-workflow) - Adds a review gate between proposal and spec phases.
 - [openspec-schemas](https://github.com/intent-driven-dev/openspec-schemas) - Custom workflow schemas including minimalist and event-driven templates.
 - [openspec-schemas by kmhalvin](https://github.com/kmhalvin/openspec-schemas) - Subagent-driven development and QRSPI multi-phase reasoning schemas.
