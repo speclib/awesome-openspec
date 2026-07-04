@@ -139,6 +139,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 ## Related Projects
 
 - [Awesome AI-Driven Development](https://github.com/eltociear/awesome-AI-driven-development) - Curated list of 500+ AI-powered development tools.
+- [Cosmosmith](https://github.com/devnomad-byte/cosmosmith) - Multi-agent workflow initializer for AGENTS.md, tasks, specs, and tool adapters.
 
 ## Contributing
 
