@@ -117,6 +117,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [OpenSpec-practise](https://github.com/ForceInjection/OpenSpec-practise) - Practical guide to OpenSpec v1.3.0 with SDD examples. (Chinese with English translation)
 - [openspec-tutorial](https://github.com/aiyinluya/openspec-tutorial) - Beginner tutorial for OpenSpec. (Taiwanese)
 - [spec-compare](https://github.com/cameronsjo/spec-compare) - Comparison of six SDD tools with decision frameworks and scoring matrices.
+- [What Is Spec-Driven Development?](https://felipefontoura.com/articles/what-is-spec-driven-development/) - A practitioner's guide to SDD.
 
 ## Community
 
@@ -132,6 +133,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD) - Agile AI-driven development using formal specs as single source of truth.
 - [Get Shit Done](https://github.com/gsd-build/get-shit-done) - Spec-driven workflow with multi-agent orchestration and wave-based parallel execution.
 - [Kiro](https://github.com/kirodotdev/Kiro) - AWS agentic IDE converting natural language into structured specs.
+- [pi-sdd-kit](https://github.com/felipefontoura/pi-sdd-kit) - Spec-driven development as skills for the Pi coding agent, with approval gates.
 - [Spec Kitty](https://github.com/Priivacy-ai/spec-kitty) - SDD CLI workflow with Kanban dashboard, Git worktree isolation, and auto-merge.
 - [Spec-Kit](https://github.com/github/spec-kit) - GitHub's official SDD toolkit with CLI, templates, scaffolding, and AI integrations.
 - [Tessl SDD Tile](https://github.com/tesslio/spec-driven-development-tile) - Tile teaching MCP-compatible AI agents to write specs before coding.
