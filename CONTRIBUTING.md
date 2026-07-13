@@ -16,6 +16,13 @@ Thank you for your interest in contributing!
 - Keep descriptions concise (one sentence)
 - Add new entries in alphabetical order within the relevant section
 - Check that links are working
+- Mark non-English resources with a trailing language marker like `(Chinese)` — the website turns it into a language icon
+
+## Website
+
+The site at [speclib.github.io/awesome-openspec](https://speclib.github.io/awesome-openspec/)
+is generated automatically from `README.md` (daily and on every push to main).
+Never edit site data by hand — just update the README and the site follows.
 
 ## What to Add
 

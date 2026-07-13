@@ -1,0 +1,16 @@
+{
+  "name": "awesome-openspec-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync-data": "node -e \"const fs=require('fs');const src=fs.existsSync('../data/entries.json')?'../data/entries.json':'src/data/entries.fixture.json';fs.copyFileSync(src,'src/data/entries.json');console.log('using',src)\"",
+    "predev": "npm run sync-data",
+    "dev": "astro dev",
+    "prebuild": "npm run sync-data",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}

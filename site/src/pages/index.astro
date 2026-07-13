@@ -1,0 +1,190 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/entries.json';
+
+const fmtCount = (n) =>
+  n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k` : `${n}`;
+
+const relTime = (iso) => {
+  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+  if (days < 1) return 'today';
+  if (days < 30) return `${days}d ago`;
+  if (days < 365) return `${Math.floor(days / 30)}mo ago`;
+  return `${Math.floor(days / 365)}y ago`;
+};
+
+const generatedAt = new Date(data.generated_at);
+const sections = data.sections.map((s) => ({
+  ...s,
+  repos: s.entries
+    .filter((e) => e.type === 'repo')
+    .sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0)),
+  others: s.entries.filter((e) => e.type !== 'repo'),
+}));
+---
+
+<Base
+  title="Awesome OpenSpec"
+  description="A curated, searchable catalog of OpenSpec and Spec-Driven Development resources."
+>
+  <main>
+    <header class="site-header">
+      <div>
+        <h1>Awesome OpenSpec</h1>
+        <p class="tagline">
+          A curated catalog of OpenSpec resources, tools, and Spec-Driven Development (SDD) resources.
+        </p>
+        <p class="freshness">
+          Last updated: <time datetime={data.generated_at}>{generatedAt.toUTCString()}</time>
+        </p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" title="Cycle light / dark / system">
+        Theme: <span id="theme-label">system</span>
+      </button>
+    </header>
+
+    <div class="controls">
+      <input
+        type="search"
+        class="search"
+        id="search"
+        placeholder={`Search ${data.sections.reduce((n, s) => n + s.entries.length, 0)} entries…`}
+        autocomplete="off"
+      />
+      <div class="control-row" id="sort-row">
+        <span class="label">Sort repos:</span>
+        <button class="chip" data-sort="stars" aria-pressed="true">★ Stars</button>
+        <button class="chip" data-sort="name" aria-pressed="false">A–Z</button>
+        <button class="chip" data-sort="pushed" aria-pressed="false">Recently pushed</button>
+      </div>
+      <div class="control-row" id="filter-row">
+        <span class="label">Section:</span>
+        <button class="chip" data-section="" aria-pressed="true">All</button>
+        {sections.map((s) => (
+          <button class="chip" data-section={s.title} aria-pressed="false">{s.title}</button>
+        ))}
+      </div>
+    </div>
+
+    {sections.map((s) => (
+      <section class="group" data-section={s.title}>
+        <h2>{s.title}</h2>
+        {s.repos.length > 0 && (
+          <div class="cards">
+            {s.repos.map((e) => (
+              <article
+                class="card entry"
+                data-name={e.name.toLowerCase()}
+                data-desc={e.description.toLowerCase()}
+                data-stars={e.stars ?? 0}
+                data-pushed={e.pushed_at ? new Date(e.pushed_at).getTime() : 0}
+              >
+                <span class="name">
+                  <a href={e.url}>{e.name}</a>
+                  {' '}
+                  <span class={`badge lang-${e.language_tag}`} title={e.language_tag === 'zh' ? 'Chinese' : 'English'}>
+                    {e.language_tag === 'zh' ? '中' : 'EN'}
+                  </span>
+                  {e.archived && <span class="badge archived">archived</span>}
+                </span>
+                <p class="desc">{e.description}</p>
+                <span class="meta">
+                  {typeof e.stars === 'number' && <span>★ {fmtCount(e.stars)}</span>}
+                  {e.language && <span>{e.language}</span>}
+                  {e.pushed_at && <span>{relTime(e.pushed_at)}</span>}
+                </span>
+              </article>
+            ))}
+          </div>
+        )}
+        {s.others.length > 0 && (
+          <div class="rows">
+            {s.others.map((e) => (
+              <div
+                class="row entry"
+                data-name={e.name.toLowerCase()}
+                data-desc={e.description.toLowerCase()}
+              >
+                <a href={e.url}>{e.name}</a>
+                <span class={`badge lang-${e.language_tag}`} title={e.language_tag === 'zh' ? 'Chinese' : 'English'}>
+                  {e.language_tag === 'zh' ? '中' : 'EN'}
+                </span>
+                <span class="desc">{e.description}</span>
+                {typeof e.views === 'number' && <span class="views">▶ {fmtCount(e.views)} views</span>}
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    ))}
+  </main>
+</Base>
+
+<script>
+  // --- Theme: three-state cycle persisted in localStorage ---
+  const MODES = ['light', 'dark', 'system'];
+  const toggle = document.getElementById('theme-toggle');
+  const label = document.getElementById('theme-label');
+  const applyTheme = (mode) => {
+    document.documentElement.dataset.theme = mode;
+    label.textContent = mode;
+    localStorage.setItem('theme', mode);
+  };
+  label.textContent = document.documentElement.dataset.theme;
+  toggle.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme;
+    applyTheme(MODES[(MODES.indexOf(current) + 1) % MODES.length]);
+  });
+
+  // --- Search: substring match on name + description ---
+  const search = document.getElementById('search');
+  const entries = [...document.querySelectorAll('.entry')];
+  const groups = [...document.querySelectorAll('.group')];
+
+  const applyVisibility = () => {
+    const q = search.value.trim().toLowerCase();
+    const active = document.querySelector('#filter-row .chip[aria-pressed="true"]');
+    const section = active?.dataset.section ?? '';
+    for (const group of groups) {
+      const inSection = !section || group.dataset.section === section;
+      let visible = 0;
+      for (const entry of group.querySelectorAll('.entry')) {
+        const match =
+          inSection &&
+          (!q || entry.dataset.name.includes(q) || entry.dataset.desc.includes(q));
+        entry.classList.toggle('hidden', !match);
+        if (match) visible++;
+      }
+      group.classList.toggle('hidden', visible === 0);
+    }
+  };
+  search.addEventListener('input', applyVisibility);
+
+  // --- Section filter chips ---
+  document.getElementById('filter-row').addEventListener('click', (ev) => {
+    const chip = ev.target.closest('.chip');
+    if (!chip) return;
+    for (const c of document.querySelectorAll('#filter-row .chip')) {
+      c.setAttribute('aria-pressed', String(c === chip));
+    }
+    applyVisibility();
+  });
+
+  // --- Sort: repo cards only, within each section ---
+  const comparators = {
+    stars: (a, b) => Number(b.dataset.stars) - Number(a.dataset.stars),
+    name: (a, b) => a.dataset.name.localeCompare(b.dataset.name),
+    pushed: (a, b) => Number(b.dataset.pushed) - Number(a.dataset.pushed),
+  };
+  document.getElementById('sort-row').addEventListener('click', (ev) => {
+    const chip = ev.target.closest('.chip');
+    if (!chip) return;
+    for (const c of document.querySelectorAll('#sort-row .chip')) {
+      c.setAttribute('aria-pressed', String(c === chip));
+    }
+    const cmp = comparators[chip.dataset.sort];
+    for (const cards of document.querySelectorAll('.cards')) {
+      [...cards.children].sort(cmp).forEach((el) => cards.appendChild(el));
+    }
+  });
+</script>

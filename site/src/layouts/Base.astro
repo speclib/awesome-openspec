@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      document.documentElement.dataset.theme =
+        stored === 'light' || stored === 'dark' ? stored : 'system';
+    </script>
+  </head>
+  <body>
+    <slot />
+    <footer>
+      <p>
+        Generated from
+        <a href="https://github.com/speclib/awesome-openspec">speclib/awesome-openspec</a>
+        — contributions welcome via the README.
+      </p>
+    </footer>
+  </body>
+</html>

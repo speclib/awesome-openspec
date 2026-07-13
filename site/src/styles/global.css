@@ -1,0 +1,261 @@
+:root {
+  --bg: #fafafa;
+  --bg-card: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #5b5bd6;
+  --accent-soft: #eeeefc;
+  --badge-bg: #f3f4f6;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+}
+
+[data-theme='dark'] {
+  --bg: #0f1117;
+  --bg-card: #181b25;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border: #2a2e3d;
+  --accent: #8b8bf0;
+  --accent-soft: #23234a;
+  --badge-bg: #232735;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='system'] {
+    --bg: #0f1117;
+    --bg-card: #181b25;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --border: #2a2e3d;
+    --accent: #8b8bf0;
+    --accent-soft: #23234a;
+    --badge-bg: #232735;
+    --shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  padding-top: 2.5rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.tagline {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.freshness {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  padding: 1rem 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.search {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+.search:focus {
+  outline: 2px solid var(--accent);
+  border-color: transparent;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.control-row .label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-right: 0.2rem;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.group {
+  margin-top: 2rem;
+}
+
+.group h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.75rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.75rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card .name {
+  font-weight: 600;
+}
+
+.card .desc {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  flex-grow: 1;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  align-items: center;
+}
+
+.badge {
+  background: var(--badge-bg);
+  border-radius: 5px;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.72rem;
+}
+
+.badge.lang-zh {
+  color: #c2410c;
+}
+
+.badge.archived {
+  color: #b91c1c;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+  align-items: baseline;
+  padding: 0.45rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.row .desc {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.row .views {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}

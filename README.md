@@ -6,6 +6,9 @@ OpenSpec is a lightweight, open-source spec-driven development framework that
 helps AI coding assistants follow instructions more effectively. It works with
 30+ tools including Claude Code, Cursor, GitHub Copilot, and more.
 
+Browse this list as a searchable website with live star counts at
+[speclib.github.io/awesome-openspec](https://speclib.github.io/awesome-openspec/).
+
 ## Contents
 
 - [Key Concepts](#key-concepts)
