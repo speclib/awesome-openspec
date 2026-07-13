@@ -64,7 +64,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [openspec-ui](https://github.com/ToruAI/openspec-ui) - Real-time Kanban dashboard for tracking changes across multiple repositories.
 - [OpenSpecUI](https://github.com/jixoai/openspecui) - Web interface for OpenSpec workflows with live mode and static export support.
 - [Specboard](https://github.com/sflueckiger/specboard) - Web dashboard for monitoring progress across workspaces with swimlane visualization.
-- [Spek](https://github.com/kewang/spek) - Read-only viewer with BDD highlighting and full-text search for web, VS Code, and IntelliJ.
+- [Spek](https://github.com/spekhq/spek) - Read-only viewer with BDD highlighting and full-text search for web, VS Code, and IntelliJ.
 
 ## Tools
 
@@ -76,7 +76,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 ## OpenSpec as Integration or Plugin
 
-- [claude-plugin-design](https://github.com/joestump/claude-plugin-design) - Claude Code plugin for architecture governance with ADRs.
+- [claude-plugin-sdd](https://github.com/joestump/claude-plugin-sdd) - Claude Code plugin for SDD with ADRs, OpenSpec specs, and sprint planning.
 - [ClawSpec](https://github.com/bytegh/clawspec) - OpenClaw plugin bringing OpenSpec workflows into chat with background execution.
 - [Flokay](https://github.com/pacaplan/flokay) - Claude Code and Cursor plugin with plan-then-implement workflow and subagent dispatch.
 - [intellij-openspec](https://github.com/johnnyblabs/intellij-openspec) - IntelliJ IDEA plugin for OpenSpec, available on the JetBrains Marketplace.
