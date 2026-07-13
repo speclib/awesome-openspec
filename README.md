@@ -107,6 +107,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 ## Schemas & Extensions
 
+- [e2e-runbooks](https://github.com/Lukk17/openspec-schemas) - Capability-level e2e runbooks with behaviour-only assertions and token accounting.
 - [flow-kit](https://github.com/rihebty/flow-kit) - Workflow kit merging BMAD, Spec-Kit, OpenSpec, GSD, and Superpowers. (Chinese)
 - [HyperSpec](https://github.com/wind7rui/HyperSpec) - Workflow skill coordinating OpenSpec specs with Superpowers TDD. (Chinese)
 - [openspec-plus](https://github.com/sudokar/openspec-plus) - Agentic skills improving discovery, requirements, design decisions, and execution.
