@@ -28,13 +28,13 @@
 
 ## 4. Deployment workflow
 
-- [ ] 4.1 Create `.github/workflows/deploy-site.yml`: triggers push-to-main, daily cron (`17 4 * * *`), workflow_dispatch; concurrency group with cancel-in-progress
-- [ ] 4.2 Pipeline steps: checkout → run `scripts/fetch-entries.js` (GITHUB_TOKEN, optional YOUTUBE_API_KEY) → copy entries.json into `site/src/data/` → `npm ci && npm run build` in `site/` → upload-pages-artifact → deploy-pages with required permissions
-- [ ] 4.3 Enable GitHub Pages with "GitHub Actions" build type on speclib/awesome-openspec (gh api or settings UI)
+- [x] 4.1 Create `.github/workflows/deploy-site.yml`: triggers push-to-main, daily cron (`17 4 * * *`), workflow_dispatch; concurrency group with cancel-in-progress
+- [x] 4.2 Pipeline steps: checkout → run `scripts/fetch-entries.js` (GITHUB_TOKEN, optional YOUTUBE_API_KEY) → copy entries.json into `site/src/data/` → `npm ci && npm run build` in `site/` → upload-pages-artifact → deploy-pages with required permissions
+- [x] 4.3 Enable GitHub Pages with "GitHub Actions" build type on speclib/awesome-openspec (gh api or settings UI)
 
 ## 5. Verification and docs
 
-- [ ] 5.1 Local end-to-end check: extraction → build → `astro preview`, verify search, all three sort orders, section filters, theme toggle persistence, language icons, no `(Chinese)` text remnants
-- [ ] 5.2 Deploy via workflow_dispatch and verify the live site at https://speclib.github.io/awesome-openspec (assets resolve under base path, stars visible, last-updated present)
-- [ ] 5.3 Trigger a second run and confirm no generated files were committed and the deployment concurrency behaves
-- [ ] 5.4 Add a "Website" link/badge to README intro and a short section in CONTRIBUTING.md noting the site is generated from README (no manual site edits)
+- [x] 5.1 Local end-to-end check: extraction → build → `astro preview`, verify search, all three sort orders, section filters, theme toggle persistence, language icons, no `(Chinese)` text remnants
+- [x] 5.2 Deploy via workflow_dispatch and verify the live site at https://speclib.github.io/awesome-openspec (assets resolve under base path, stars visible, last-updated present)
+- [x] 5.3 Trigger a second run and confirm no generated files were committed and the deployment concurrency behaves
+- [x] 5.4 Add a "Website" link/badge to README intro and a short section in CONTRIBUTING.md noting the site is generated from README (no manual site edits)
