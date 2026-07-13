@@ -10,6 +10,11 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <script
+      is:inline
+      async
+      src="https://umami.pimsnel.com/script.js"
+      data-website-id="477fea06-c1a7-4725-a44e-82a5f727f6aa"></script>
     <script is:inline>
       const stored = localStorage.getItem('theme');
       document.documentElement.dataset.theme =
