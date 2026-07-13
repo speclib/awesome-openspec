@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-07-13T12:00:00.000Z",
+  "sections": [
+    {
+      "title": "Official Resources",
+      "entries": [
+        {
+          "name": "Getting Started Guide",
+          "url": "https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md",
+          "description": "Official getting started documentation.",
+          "language_tag": "en",
+          "type": "link"
+        },
+        {
+          "name": "npm Package",
+          "url": "https://www.npmjs.com/package/@fission-ai/openspec",
+          "description": "Official npm package for installation.",
+          "language_tag": "en",
+          "type": "link"
+        },
+        {
+          "name": "OpenSpec",
+          "url": "https://github.com/Fission-AI/OpenSpec/",
+          "description": "Official OpenSpec CLI. Spec-driven development (SDD) for AI coding assistants.",
+          "language_tag": "en",
+          "type": "repo",
+          "owner": "Fission-AI",
+          "repo": "OpenSpec",
+          "stars": 60541,
+          "pushed_at": "2026-07-10T15:51:48Z",
+          "language": "TypeScript",
+          "archived": false
+        }
+      ]
+    },
+    {
+      "title": "Videos",
+      "entries": [
+        {
+          "name": "I Found the Simplest AI Dev Tool Ever",
+          "url": "https://www.youtube.com/watch?v=cQv3ocbsKHY",
+          "description": "Short introduction video to OpenSpec.",
+          "language_tag": "en",
+          "type": "video",
+          "video_id": "cQv3ocbsKHY"
+        },
+        {
+          "name": "Launch Video",
+          "url": "https://youtu.be/N-MftbmnmMo",
+          "description": "An introduction to OpenSpec by Tabish Bidiwale.",
+          "language_tag": "en",
+          "type": "video",
+          "video_id": "N-MftbmnmMo"
+        },
+        {
+          "name": "OpenSpec Changes Everything / No More Vibe Coding",
+          "url": "https://www.youtube.com/watch?v=5oUmpdpbejk",
+          "description": "Full tutorial on OpenSpec workflow.",
+          "language_tag": "en",
+          "type": "video",
+          "video_id": "5oUmpdpbejk"
+        }
+      ]
+    }
+  ]
+}
