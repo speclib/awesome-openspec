@@ -102,6 +102,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [openspec-skills](https://github.com/chyiiiiiiiiiiii/openspec-skills) - Spec-Driven Development skills for Claude Code.
 - [openspec-superpowers-opencode](https://github.com/moyaspace/openspec-superpowers-opencode) - Superpowers and OpenSpec combined in OpenCode.
 - [openspec-tdd](https://github.com/yuritoledo/openspec-tdd) - Plugin for Claude Code, OpenCode, and Pi generating failing tests from specs.
+- [openspec-ui-vscode](https://github.com/coderj001/openspec-ui-vscode) - VS Code/Cursor extension with a visual dashboard, Mermaid diagrams, and artifact comments.
 - [OpenSpec-Zed](https://github.com/uwzis/OpenSpec-Zed) - Zed editor extension adding OpenSpec workflow slash commands to the Assistant panel.
 - [openspec.el](https://github.com/Zacalot/openspec.el) - Emacs interface for OpenSpec workflows.
 - [openspec.nvim](https://github.com/ctchen222/openspec.nvim) - Neovim control surface for OpenSpec workflows.
