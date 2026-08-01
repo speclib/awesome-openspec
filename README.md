@@ -184,6 +184,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [Spec-Kit](https://github.com/github/spec-kit) - GitHub's official SDD toolkit with CLI, templates, scaffolding, and AI integrations.
 - [spectr](https://github.com/connerohnesorge/spectr) - Validatable spec-driven development inspired by OpenSpec and Kiro.
 - [Tessl SDD Tile](https://github.com/tesslio/spec-driven-development-tile) - Tile teaching MCP-compatible AI agents to write specs before coding.
+- [THROUGHLINE](https://github.com/hellomyoh/throughline) - Markdown and git SDD framework with persona spec review and cross-session memory.
 
 ## Related Projects
 
