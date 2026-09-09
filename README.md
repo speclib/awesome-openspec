@@ -152,7 +152,6 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [genai-development-techniques](https://github.com/olivomarco/genai-development-techniques) - Evidence-based comparison of AI coding methodologies.
 - [OpenSpec + Beads](https://github.com/cameronsjo/spec-compare/blob/main/docs/cheatsheet-beads-openspec.md) - Cheatsheet for OpenSpec with Beads.
 - [OpenSpec on IntentDriven](https://intent-driven.dev/knowledge/openspec/) - IntentDriven development resource with a focus on OpenSpec.
-- [OpenSpec with SpecBuddy](https://specbuddy.dev/blog/openspec-with-specbuddy/) - Reviewing an OpenSpec change step by step inside your IDE.
 - [OpenSpec-cn](https://github.com/sohaha/studyzy-OpenSpec-cn) - Chinese translation of the OpenSpec documentation.
 - [OpenSpec-Docs-zh](https://github.com/radebit/OpenSpec-Docs-zh) - Chinese community documentation for OpenSpec.
 - [openspec-learning-guide](https://github.com/xiaojian98/openspec-learning-guide) - Chinese learning guide for getting started with OpenSpec.
