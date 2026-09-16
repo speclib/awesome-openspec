@@ -107,6 +107,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [openspec.el](https://github.com/Zacalot/openspec.el) - Emacs interface for OpenSpec workflows.
 - [openspec.nvim](https://github.com/ctchen222/openspec.nvim) - Neovim control surface for OpenSpec workflows.
 - [opsx-feature-dev](https://github.com/mbertani/opsx-feature-dev) - Claude Code and Copilot plugin with a 7-phase feature development workflow.
+- [SpecBuddy](https://specbuddy.dev/#openspec) - JetBrains and VS Code plugin driving /opsx commands with in-IDE delta review and per-step gates.
 - [vitepress-plugin-openspec](https://github.com/stritti/vitepress-plugin-openspec) - VitePress plugin rendering OpenSpec folders as doc pages.
 
 ## Schemas & Extensions
