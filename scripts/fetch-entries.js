@@ -16,7 +16,7 @@ const GITHUB_REPO_RE = /^https?:\/\/github\.com\/([^/]+)\/([^/#?]+)\/?$/;
 const YOUTUBE_RE = /^https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/;
 const LANGUAGE_MARKER_RE = /\s*\((?:Chinese|Taiwanese)[^)]*\)\s*$/;
 
-function classify(url) {
+export function classify(url) {
   const repoMatch = url.match(GITHUB_REPO_RE);
   if (repoMatch) {
     return { type: 'repo', owner: repoMatch[1], repo: repoMatch[2] };
@@ -28,8 +28,8 @@ function classify(url) {
   return { type: 'link' };
 }
 
-function parseReadme() {
-  const content = readFileSync(README_PATH, 'utf-8');
+export function parseReadme({ readmePath = README_PATH } = {}) {
+  const content = readFileSync(readmePath, 'utf-8');
   const lines = content.split('\n');
   const sections = [];
   let current = null;
@@ -70,8 +70,8 @@ function parseReadme() {
   return sections.filter((s) => s.entries.length > 0);
 }
 
-async function fetchRepoData(owner, repo, headers) {
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers });
+export async function fetchRepoData(owner, repo, headers, fetchImpl = globalThis.fetch) {
+  const res = await fetchImpl(`https://api.github.com/repos/${owner}/${repo}`, { headers });
 
   if (res.status === 403) {
     const resetHeader = res.headers.get('x-ratelimit-reset');
@@ -96,7 +96,7 @@ async function fetchRepoData(owner, repo, headers) {
   };
 }
 
-async function enrichRepos(sections) {
+export async function enrichRepos(sections, { fetchImpl = globalThis.fetch } = {}) {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
     console.warn('⚠ GITHUB_TOKEN not set — using unauthenticated requests (60 req/hr limit)');
@@ -117,7 +117,7 @@ async function enrichRepos(sections) {
     const entry = repos[i];
     console.log(`[${i + 1}/${repos.length}] Fetching ${entry.owner}/${entry.repo}...`);
     try {
-      const data = await fetchRepoData(entry.owner, entry.repo, headers);
+      const data = await fetchRepoData(entry.owner, entry.repo, headers, fetchImpl);
       if (data.error) {
         failed++;
         console.warn(`⚠ ${entry.owner}/${entry.repo}: ${data.error}`);
@@ -137,7 +137,7 @@ async function enrichRepos(sections) {
   return { total: repos.length, failed };
 }
 
-async function enrichVideos(sections) {
+export async function enrichVideos(sections, { fetchImpl = globalThis.fetch } = {}) {
   const videos = sections.flatMap((s) => s.entries.filter((e) => e.type === 'video'));
   if (videos.length === 0) return;
 
@@ -149,7 +149,7 @@ async function enrichVideos(sections) {
 
   try {
     const ids = videos.map((v) => v.video_id).join(',');
-    const res = await fetch(
+    const res = await fetchImpl(
       `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${ids}&key=${key}`
     );
     if (!res.ok) {
@@ -172,8 +172,13 @@ async function enrichVideos(sections) {
   }
 }
 
-async function main() {
-  const sections = parseReadme();
+export async function main({
+  readmePath = README_PATH,
+  outputDir = OUTPUT_DIR,
+  outputPath = OUTPUT_PATH,
+  fetchImpl = globalThis.fetch,
+} = {}) {
+  const sections = parseReadme({ readmePath });
   const counts = sections.flatMap((s) => s.entries).reduce(
     (acc, e) => ({ ...acc, [e.type]: (acc[e.type] ?? 0) + 1 }),
     {}
@@ -183,21 +188,25 @@ async function main() {
       `${counts.video ?? 0} videos, ${counts.link ?? 0} links\n`
   );
 
-  const { total, failed } = await enrichRepos(sections);
-  await enrichVideos(sections);
+  const { total, failed } = await enrichRepos(sections, { fetchImpl });
+  await enrichVideos(sections, { fetchImpl });
 
-  mkdirSync(OUTPUT_DIR, { recursive: true });
+  mkdirSync(outputDir, { recursive: true });
   const output = {
     generated_at: new Date().toISOString(),
     sections,
   };
-  writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + '\n');
+  writeFileSync(outputPath, JSON.stringify(output, null, 2) + '\n');
 
   console.log(`\n✓ Done: ${total - failed}/${total} repos enriched`);
-  console.log(`  Output: ${OUTPUT_PATH}`);
+  console.log(`  Output: ${outputPath}`);
+
+  return { sections, total, failed };
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.filename === process.argv[1]) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

@@ -13,8 +13,8 @@ const OUTPUT_PATH = join(OUTPUT_DIR, 'repos.json');
 const GITHUB_REPO_RE = /\[([^\]]+)\]\(https?:\/\/github\.com\/([^/]+)\/([^/)#\s]+)(?:\/[^)]*?)?\)/g;
 const SECTION_RE = /^## (.+)$/;
 
-function parseReadme() {
-  const content = readFileSync(README_PATH, 'utf-8');
+export function parseReadme({ readmePath = README_PATH } = {}) {
+  const content = readFileSync(readmePath, 'utf-8');
   const lines = content.split('\n');
   const seen = new Set();
   const repos = [];
@@ -49,9 +49,9 @@ function parseReadme() {
   return repos;
 }
 
-async function fetchRepoData(owner, repo, headers) {
+export async function fetchRepoData(owner, repo, headers, fetchImpl = globalThis.fetch) {
   const url = `https://api.github.com/repos/${owner}/${repo}`;
-  const res = await fetch(url, { headers });
+  const res = await fetchImpl(url, { headers });
 
   if (res.status === 403) {
     const resetHeader = res.headers.get('x-ratelimit-reset');
@@ -84,7 +84,12 @@ async function fetchRepoData(owner, repo, headers) {
   };
 }
 
-async function main() {
+export async function main({
+  readmePath = README_PATH,
+  outputDir = OUTPUT_DIR,
+  outputPath = OUTPUT_PATH,
+  fetchImpl = globalThis.fetch,
+} = {}) {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
     console.warn('⚠ GITHUB_TOKEN not set — using unauthenticated requests (60 req/hr limit)');
@@ -98,7 +103,7 @@ async function main() {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const repos = parseReadme();
+  const repos = parseReadme({ readmePath });
   console.log(`Found ${repos.length} GitHub repos in README.md\n`);
 
   const results = [];
@@ -109,7 +114,7 @@ async function main() {
     console.log(`[${i + 1}/${repos.length}] Fetching ${entry.owner}/${entry.repo}...`);
 
     try {
-      const data = await fetchRepoData(entry.owner, entry.repo, headers);
+      const data = await fetchRepoData(entry.owner, entry.repo, headers, fetchImpl);
       if (data.error) {
         failed++;
         results.push({
@@ -149,21 +154,25 @@ async function main() {
     }
   }
 
-  mkdirSync(OUTPUT_DIR, { recursive: true });
+  mkdirSync(outputDir, { recursive: true });
 
   const output = {
     generated_at: new Date().toISOString(),
     repos: results,
   };
 
-  writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + '\n');
+  writeFileSync(outputPath, JSON.stringify(output, null, 2) + '\n');
 
   const successful = results.length - failed;
   console.log(`\n✓ Done: ${successful} successful, ${failed} failed out of ${repos.length} repos`);
-  console.log(`  Output: ${OUTPUT_PATH}`);
+  console.log(`  Output: ${outputPath}`);
+
+  return { repos: results, failed };
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.filename === process.argv[1]) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

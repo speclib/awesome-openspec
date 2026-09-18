@@ -1,11 +1,11 @@
 ---
 # awesome-openspec-j51x
 title: 04 Test coverage for the ship gate
-status: todo
+status: in-progress
 type: milestone
 priority: normal
 created_at: 2026-09-17T16:32:32Z
-updated_at: 2026-09-17T16:32:47Z
+updated_at: 2026-09-18T15:55:22Z
 ---
 
 There is no test suite yet, so the coverage gate in flake.nix fails by design.

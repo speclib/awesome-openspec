@@ -1,0 +1,27 @@
+name: tinychange
+version: 1
+description: >-
+  Lean specs -> tasks OpenSpec workflow for very small changes. Skips the
+  proposal and design phases (which are ceremony for tiny edits) but keeps a
+  full spec delta and a tasks checklist, so even a one-line change still records
+  its spec impact. Use skip_specs: true for pure refactors with no spec impact.
+artifacts:
+  - id: specs
+    generates: specs/**/*.md
+    description: >-
+      Spec delta for the change. Even tiny changes can shift behavior, so scan
+      the existing specs first and add ADDED/MODIFIED/REMOVED requirements where
+      behavior changes. If nothing behavioral changes, set skip_specs: true on
+      the change instead of inventing a requirement.
+    template: specs/spec.md
+    requires: []
+  - id: tasks
+    generates: tasks.md
+    description: Short implementation checklist plus a verification step.
+    template: tasks.md
+    requires:
+      - specs
+apply:
+  requires:
+    - tasks
+  tracks: tasks.md

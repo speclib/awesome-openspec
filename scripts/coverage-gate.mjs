@@ -13,16 +13,10 @@ const OVERALL_MINIMUM = 70;
 const CORE_MINIMUM = 80;
 const CORE_PACKAGES = ['rules', 'scripts'];
 
-const lcovPath = process.argv[2];
-if (!lcovPath) {
-  console.error('usage: coverage-gate.mjs <lcov-file>');
-  process.exit(2);
-}
-
 /**
  * Parse an lcov report into one {file, found, hit} record per source file.
  */
-function parseLcov(text) {
+export function parseLcov(text) {
   const records = [];
   let current = null;
 
@@ -46,62 +40,82 @@ function parseLcov(text) {
 /**
  * Is this record part of the named package directory?
  */
-function inPackage(record, pkg) {
+export function inPackage(record, pkg) {
   return record.file.split('/').includes(pkg);
 }
 
 /**
  * Is this record a test file rather than code under test?
  */
-function isTest(record) {
+export function isTest(record) {
   const segments = record.file.split('/');
   return segments.includes('test') || segments.includes('tests')
     || /\.test\.(m?js)$/.test(record.file);
 }
 
-function percentage(records) {
+export function percentage(records) {
   const found = records.reduce((total, r) => total + r.found, 0);
   const hit = records.reduce((total, r) => total + r.hit, 0);
   return { found, hit, percent: found === 0 ? 0 : (hit / found) * 100 };
 }
 
-const records = parseLcov(readFileSync(lcovPath, 'utf8')).filter(r => !isTest(r));
+/**
+ * Score an lcov report against the thresholds. Pure: no I/O, no exit.
+ */
+export function evaluate(lcovText) {
+  const records = parseLcov(lcovText).filter((r) => !isTest(r));
 
-const rows = [];
-let failed = false;
+  const rows = [];
+  let failed = false;
 
-const overall = percentage(records);
-rows.push(['overall', overall, OVERALL_MINIMUM]);
-if (overall.percent < OVERALL_MINIMUM) failed = true;
+  const overall = percentage(records);
+  rows.push({ label: 'overall', result: overall, minimum: OVERALL_MINIMUM });
+  if (overall.percent < OVERALL_MINIMUM) failed = true;
 
-for (const pkg of CORE_PACKAGES) {
-  const result = percentage(records.filter(r => inPackage(r, pkg)));
-  rows.push([`${pkg}/`, result, CORE_MINIMUM]);
-  if (result.percent < CORE_MINIMUM) failed = true;
+  for (const pkg of CORE_PACKAGES) {
+    const result = percentage(records.filter((r) => inPackage(r, pkg)));
+    rows.push({ label: `${pkg}/`, result, minimum: CORE_MINIMUM });
+    if (result.percent < CORE_MINIMUM) failed = true;
+  }
+
+  return { rows, failed, empty: records.length === 0 };
 }
 
-console.log('');
-console.log('Coverage gate');
-console.log('  scope      lines      covered   minimum   result');
-for (const [label, result, minimum] of rows) {
-  const ok = result.percent >= minimum;
-  console.log(
-    '  ' + label.padEnd(11)
-    + String(result.found).padEnd(11)
-    + (result.percent.toFixed(1) + '%').padEnd(10)
-    + (minimum + '%').padEnd(10)
-    + (ok ? 'pass' : 'FAIL')
-  );
-}
-console.log('');
+/**
+ * Print the per-scope table and return the process exit code.
+ */
+export function report({ rows, failed, empty }, out = console) {
+  out.log('');
+  out.log('Coverage gate');
+  out.log('  scope      lines      covered   minimum   result');
+  for (const { label, result, minimum } of rows) {
+    const ok = result.percent >= minimum;
+    out.log(
+      '  ' + label.padEnd(11)
+      + String(result.found).padEnd(11)
+      + (result.percent.toFixed(1) + '%').padEnd(10)
+      + (minimum + '%').padEnd(10)
+      + (ok ? 'pass' : 'FAIL')
+    );
+  }
+  out.log('');
 
-if (records.length === 0) {
-  console.error('coverage-gate: the report covers no source files, so there are no tests yet.');
+  if (empty) {
+    out.error('coverage-gate: the report covers no source files, so there are no tests yet.');
+  }
+  if (failed) {
+    out.error('coverage-gate: thresholds not met, refusing to pass the gate.');
+    return 1;
+  }
+  out.log('coverage-gate: all thresholds met.');
+  return 0;
 }
 
-if (failed) {
-  console.error('coverage-gate: thresholds not met, refusing to pass the gate.');
-  process.exit(1);
+if (process.argv[1] && import.meta.filename === process.argv[1]) {
+  const lcovPath = process.argv[2];
+  if (!lcovPath) {
+    console.error('usage: coverage-gate.mjs <lcov-file>');
+    process.exit(2);
+  }
+  process.exit(report(evaluate(readFileSync(lcovPath, 'utf8'))));
 }
-
-console.log('coverage-gate: all thresholds met.');

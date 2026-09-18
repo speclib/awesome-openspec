@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+
 ### Changed
+
+- The entry scripts can now be imported without running, so they can be tested. Running them from the command line is unchanged.
 
 ### Fixed

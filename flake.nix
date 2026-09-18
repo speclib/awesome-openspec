@@ -27,7 +27,7 @@
             pname = "awesome-openspec-node-modules";
             version = "0.0.0";
             src = manifest;
-            npmDepsHash = "sha256-LIMpDsDJhPfBjHRRSB22KV18XmQG9d6FdgV+cK0UJ8Y=";
+            npmDepsHash = "sha256-pjWZ6XF4LFiIqwIuO4QpcOGiR/oHzQxdXjZDMFCBlCQ=";
             nodejs = node;
             dontNpmBuild = true;
             installPhase = ''
