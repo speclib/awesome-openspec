@@ -15,6 +15,7 @@ Thank you for your interest in contributing!
 - Keep the entire line under 150 characters so it renders on one line on GitHub
 - Keep descriptions concise (one sentence)
 - Add new entries in alphabetical order within the relevant section
+- Where a section has subsections (such as Web & Desktop and Terminal under UIs), add the entry to the subsection that matches the resource and order it alphabetically within that subsection
 - Check that links are working
 - Mark non-English resources with a trailing language marker like `(Chinese)` — the website turns it into a language icon
 

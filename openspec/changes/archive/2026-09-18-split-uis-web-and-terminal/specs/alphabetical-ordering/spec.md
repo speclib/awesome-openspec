@@ -1,9 +1,4 @@
-# alphabetical-ordering Specification
-
-## Purpose
-TBD - created by archiving change awesome-list-formatting-fixes. Update Purpose after archive.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Alphabetical ordering within sections
 All entries within each list SHALL be sorted alphabetically by their display
