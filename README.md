@@ -65,6 +65,15 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 ## UIs
 
+### Mobile
+
+- [specgetty-mobile](https://github.com/speclib/specgetty-mobile) - Android reader for OpenSpec specs, changes and tasks in a cloned repository.
+
+### Terminal
+
+- [dossier](https://github.com/fselich/dossier) - Keyboard-driven TUI for navigating proposals, designs, specs, and tasks.
+- [specgetty](https://github.com/speclib/specgetty) - Terminal UI for finding OpenSpec projects on your machine and reporting their status.
+
 ### Web & Desktop
 
 - [openspec-ui](https://github.com/ToruAI/openspec-ui) - Real-time Kanban dashboard for tracking changes across multiple repositories.
@@ -74,11 +83,6 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [Specboard](https://github.com/sflueckiger/specboard) - Web dashboard for monitoring progress across workspaces with swimlane visualization.
 - [speclens](https://github.com/dansreis/speclens) - Desktop reader for tracing requirement evolution and commenting on specs.
 - [Spek](https://github.com/spekhq/spek) - Read-only viewer with BDD highlighting and full-text search for web, VS Code, and IntelliJ.
-
-### Terminal
-
-- [dossier](https://github.com/fselich/dossier) - Keyboard-driven TUI for navigating proposals, designs, specs, and tasks.
-- [specgetty](https://github.com/speclib/specgetty) - Terminal UI for finding OpenSpec projects on your machine and reporting their status.
 
 ## Tools
 

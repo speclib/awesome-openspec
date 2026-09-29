@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New entry: specgetty, a terminal UI for finding OpenSpec projects on your machine and reporting their status.
+- New entry: specgetty-mobile, an Android reader for OpenSpec specs, changes and tasks in a cloned repository, in a new Mobile subsection under UIs.
 
 ### Changed
 
 - The entry scripts can now be imported without running, so they can be tested. Running them from the command line is unchanged.
 - The UIs section is now split into Web & Desktop and Terminal subsections, so terminal tools are easier to find. Entries are ordered alphabetically within each subsection.
+- The UIs subsections now read in alphabetical order: Mobile, Terminal, Web & Desktop.
 
 ### Fixed

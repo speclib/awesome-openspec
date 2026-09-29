@@ -1,11 +1,11 @@
 ---
 # awesome-openspec-0u7g
 title: 01 List curation and growth
-status: todo
+status: in-progress
 type: milestone
 priority: normal
 created_at: 2026-09-17T16:32:32Z
-updated_at: 2026-09-17T16:32:47Z
+updated_at: 2026-09-29T18:46:24Z
 ---
 
 Keep the list itself good: new entries arrive, stale ones get pruned, and every

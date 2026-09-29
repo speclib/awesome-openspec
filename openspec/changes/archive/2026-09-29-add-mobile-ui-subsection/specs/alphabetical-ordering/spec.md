@@ -1,9 +1,4 @@
-# alphabetical-ordering Specification
-
-## Purpose
-TBD - created by archiving change awesome-list-formatting-fixes. Update Purpose after archive.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Alphabetical ordering within sections
 All entries within each list SHALL be sorted alphabetically by their display
@@ -23,6 +18,8 @@ subsection boundaries.
 #### Scenario: Ordering restarts at each subsection
 - **WHEN** viewing the UIs section, whose last Terminal entry is "specgetty" and whose first Web & Desktop entry is "openspec-ui"
 - **THEN** both lists SHALL be internally alphabetical, and "openspec-ui" following "specgetty" across the subsection boundary SHALL NOT be reported as an ordering violation
+
+## ADDED Requirements
 
 ### Requirement: Alphabetical ordering of subsection headings
 WHERE a section is divided into `### ` subsections, those subsection headings

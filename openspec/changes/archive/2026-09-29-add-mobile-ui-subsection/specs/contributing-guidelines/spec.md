@@ -1,9 +1,4 @@
-# contributing-guidelines Specification
-
-## Purpose
-TBD - created by archiving change awesome-list-formatting-fixes. Update Purpose after archive.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Contribution guidelines reflect alphabetical ordering
 CONTRIBUTING.md SHALL instruct contributors to add new entries in alphabetical
