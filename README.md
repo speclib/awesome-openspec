@@ -86,6 +86,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 ## Tools
 
+- [Cage](https://github.com/vitalik1921/cage) - TypeScript harness linking specs, implementations, tests, and review freshness.
 - [Coding Corgi Flow](https://github.com/ricoyudog/Coding_Corgi_flow) - OpenSpec GitFlow with structured AI workflows and issue tracking.
 - [gitguardex](https://github.com/opencue/gitguardex) - Runs parallel coding agents in isolated worktrees with OpenSpec auto-wired.
 - [OmniDev Kit](https://github.com/zy-eagle/omnidev-kit) - Toolkit combining OpenSpec with cross-session memory and project intelligence.
