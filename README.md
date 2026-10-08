@@ -170,6 +170,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [OpenSpec-practise](https://github.com/ForceInjection/OpenSpec-practise) - Practical guide to OpenSpec v1.3.0 with SDD examples. (Chinese/English)
 - [openspec-tutorial](https://github.com/aiyinluya/openspec-tutorial) - Beginner tutorial for OpenSpec. (Taiwanese)
 - [spec-compare](https://github.com/cameronsjo/spec-compare) - Comparison of six SDD tools with decision frameworks and scoring matrices.
+- [Spec-Driven Development (book)](https://github.com/felipefontoura/spec-driven-development-book) - Open SDD book with a Claude Code kit.
 - [What Is Spec-Driven Development?](https://felipefontoura.com/articles/what-is-spec-driven-development/) - A practitioner's guide to SDD.
 
 ## Community
