@@ -76,6 +76,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 ### Web & Desktop
 
+- [Entalpa](https://entalpa.com/openspec) - Reads a public openspec/specs/ folder and derives stakeholders, stories and open questions from it.
 - [openspec-ui](https://github.com/ToruAI/openspec-ui) - Real-time Kanban dashboard for tracking changes across multiple repositories.
 - [openspec-viewer](https://github.com/MusicAdam/openspec-viewer) - Browser viewer with live reload, markdown rendering, and full-text search.
 - [openspec-webui](https://github.com/oioi555/openspec-webui) - Interactive browser UI for browsing and managing specifications.
