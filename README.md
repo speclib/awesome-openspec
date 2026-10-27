@@ -105,6 +105,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [Flokay](https://github.com/pacaplan/flokay) - Claude Code and Cursor plugin with plan-then-implement workflow and subagent dispatch.
 - [intellij-openspec](https://github.com/johnnyblabs/intellij-openspec) - IntelliJ IDEA plugin for OpenSpec, available on the JetBrains Marketplace.
 - [opencode-openspec](https://github.com/AngDrew/opencode-openspec) - OpenSpec spec-driven development plugin for OpenCode.
+- [opencode-openspec-sidepanel](https://github.com/speclib/opencode-openspec-sidepanel) - OpenCode v2 plugin showing OpenSpec stats in a sidepanel.
 - [opencode-plugin-openspec](https://github.com/Octane0411/opencode-plugin-openspec) - OpenCode plugin with Architect mode for spec-only writes.
 - [openflow](https://github.com/fastknifes/openflow) - OpenCode companion plugin combining OpenSpec with Superpowers.
 - [openspec-ext](https://github.com/RandyZ/openspec-ext) - VS Code and Cursor extension with a visual dashboard for changes and specs.
