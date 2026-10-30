@@ -89,6 +89,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 - [Coding Corgi Flow](https://github.com/ricoyudog/Coding_Corgi_flow) - OpenSpec GitFlow with structured AI workflows and issue tracking.
 - [gitguardex](https://github.com/opencue/gitguardex) - Runs parallel coding agents in isolated worktrees with OpenSpec auto-wired.
+- [Nogging](https://github.com/JoMe92/nogging) - Planning and Lead agents with role write boundaries: OpenSpec plans, Beads tasks, Git evidence.
 - [OmniDev Kit](https://github.com/zy-eagle/omnidev-kit) - Toolkit combining OpenSpec with cross-session memory and project intelligence.
 - [openspec-agents](https://github.com/gmf520/openspec-agents) - State-machine multi-agent framework built on OpenSpec docs. (Chinese)
 - [openspec-playwright](https://github.com/wxhou/openspec-playwright) - Playwright E2E testing with a self-healing three-agent pipeline.
