@@ -135,6 +135,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 - [openspec-schemas by kmhalvin](https://github.com/kmhalvin/openspec-schemas) - Subagent-driven development and QRSPI multi-phase reasoning schemas.
 - [openspec-spec-driven-superpowers](https://github.com/Veath/openspec-spec-driven-superpowers) - Adds superpowers-style planning and readiness gates.
 - [spec-superflow](https://github.com/MageByte-Zero/spec-superflow) - OpenSpec planning with Superpowers execution across 17 platforms. (Chinese)
+- [Specwright](https://github.com/sh1ny/specwright) - Schema and skills adding architecture triage, cross-model review, TDD, ADRs, and a PR workflow.
 - [superpowers-openspec-team-skills](https://github.com/SYZ-Coder/superpowers-openspec-team-skills) - Self-learning team skill library. (Chinese)
 - [SuperSpec](https://github.com/danielhanold/superspec) - Drop-in schema integrating Superpowers execution discipline for traceable workflows.
 
