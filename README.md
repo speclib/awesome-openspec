@@ -77,6 +77,7 @@ Spec-Driven Development (SDD) is a methodology where you and your AI coding assi
 
 ### Web & Desktop
 
+- [openspec-reader](https://github.com/sergigp/openspec-reader) - Read-only Herdr desktop app panel that sends comments on specs to your agent.
 - [openspec-ui](https://github.com/ToruAI/openspec-ui) - Real-time Kanban dashboard for tracking changes across multiple repositories.
 - [openspec-viewer](https://github.com/MusicAdam/openspec-viewer) - Browser viewer with live reload, markdown rendering, and full-text search.
 - [openspec-webui](https://github.com/oioi555/openspec-webui) - Interactive browser UI for browsing and managing specifications.
